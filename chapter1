@@ -1,1 +1,10 @@
+- Unlike hypervisor virtualization, where one or more independent machines run virtually on physical hardware via
+an intermediation layer, containers run user spaces on top of an OS kernel.
 
+- Core Components ->
+  * the Docker client and server
+  * Docker Images
+  * Registries
+  * Docker Containers
+
+- A Docker container is an image format, a standard set of operations and an execution environment
