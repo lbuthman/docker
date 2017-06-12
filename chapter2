@@ -1,1 +1,7 @@
+Instructions on installing Docker for Mac OSX using Boot2Docket -> add step-by-step instructions when installed
 
+- In the book, some examples will prompt to connect to localhost but each Docker has its own network interface and IP
+address. Use that instead. To find the Boot2Docker IP address, see book.
+
+- Any example that use volumens or the "docker run" command with the -v flag will not work with Boot2Docker. Must use
+a Linux based host with Docker for these examples (ch5 and ch6).
