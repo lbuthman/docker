@@ -1,1 +1,21 @@
+- A Docker image is made up of file systems layered over each other.
+  -- at the base is a boot file system -> bootfs
+  -- next a root file system is added being one or more operating systems -> rootfs
+  
+- The root is kept in read only to allow a union mount, which allows the addition of more read-only file systems
+to the rootfs. The union mount overlays the file systems on top of one another so that the resulting file system
+may contain files and subdirectories from any or all of the underlying file systems. Docker calls each of these
+file systems images.
 
+- Finally, when a container is launched from an image, Docker mounts a read-write file system where all our processes
+in our container will execute.
+
+- When Docker first starts a container, the initial read-write layer is empty. If you want to change a file from a
+read-only layer, the file is copied from below into the read-write layer. The read-only layer version still exists
+but is hidden under the copy. This pattern is called "copy on write" and gives Docker its power.
+
+- Using a DockerFile executes the following workflow
+  -- Docker runs a container from an image
+  -- An instruction executes and makes a change to the container
+  -- Docker runs the equivalent of "docker commit" to commit a new layer
+  -- The next instruction in the file is executed, and the process repeats until all instructions have been executed.
